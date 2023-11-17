@@ -4,20 +4,29 @@ class Television:
     MIN_CHANNEL = 0
     MAX_CHANNEL = 3
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """
+        Private instance variables
+        """
         self.__status = False
         self.__muted = False
         self.__volume = self.MIN_VOLUME
         self.__channel = self.MIN_CHANNEL
         self.__old_value = 0
 
-    def power(self):
+    def power(self) -> None:
+        """
+        Determines whether TV is on or off
+        """
         if self.__status is False:
             self.__status = True
         else:
             self.__status = False
 
-    def mute(self):
+    def mute(self) -> None:
+        """
+        Mutes or unmutes TV and saves old volume
+        """
         if self.__status is True:
             if self.__muted is True:
                 self.__muted = False
@@ -29,7 +38,10 @@ class Television:
         else:
             pass
 
-    def channel_up(self):
+    def channel_up(self) -> None:
+        """
+        Checks if TV is on then increases channel
+        """
         if self.__status is True:
             if self.__channel == self.MAX_CHANNEL:
                 self.__channel = self.MIN_CHANNEL
@@ -38,7 +50,10 @@ class Television:
         else:
             pass
 
-    def channel_down(self):
+    def channel_down(self) -> None:
+        """
+        Checks if TV is on then decreases channel
+        """
         if self.__status is True:
             if self.__channel == self.MIN_CHANNEL:
                 self.__channel = self.MAX_CHANNEL
@@ -47,7 +62,10 @@ class Television:
         else:
             pass
 
-    def volume_up(self):
+    def volume_up(self) -> None:
+        """
+        Checks if TV is muted and on then increases volume
+        """
         if self.__status is True:
             if self.__muted is True:
                 self.__muted = False
@@ -64,7 +82,10 @@ class Television:
         else:
             pass
 
-    def volume_down(self):
+    def volume_down(self) -> None:
+        """
+        Checks if TV is muted and on then decreases volume
+        """
         if self.__status is True:
             if self.__muted is True:
                 self.__muted = False
@@ -81,5 +102,9 @@ class Television:
         else:
             pass
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Statement that shows power, channel, and volume
+        :return: print statement
+        """
         return f'Power = {self.__status}, Channel = {self.__channel}, Volume = {self.__volume}'
